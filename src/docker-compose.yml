@@ -1,0 +1,15 @@
+services:
+  mssql-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql-db
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=YourSecurePwd123!
+    ports:
+      - "1433:1433"
+    networks:
+      - picpay-net
+
+networks:
+  picpay-net:
+    driver: bridge
