@@ -3,9 +3,9 @@ using PicPay.Application.DTOs;
 
 namespace PicPay.Application.Validators;
 
-public class TransactionValidator : AbstractValidator<TransactionDto>
+public abstract class TransactionValidator : AbstractValidator<TransactionDto>
 {
-    public TransactionValidator()
+    protected TransactionValidator()
     {
         RuleFor(t => t.Amount)
             .GreaterThan(0).WithMessage("The transaction amount must be greater than zero.");

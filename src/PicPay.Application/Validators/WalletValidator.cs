@@ -3,9 +3,9 @@ using PicPay.Application.DTOs;
 
 namespace PicPay.Application.Validators;
 
-public class WalletValidator : AbstractValidator<WalletDto>
+public abstract class WalletValidator : AbstractValidator<WalletDto>
 {
-    public WalletValidator()
+    protected WalletValidator()
     {
         RuleFor(w => w.UserId)
             .NotEmpty().WithMessage("User ID is required.");

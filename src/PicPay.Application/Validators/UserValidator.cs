@@ -3,9 +3,9 @@ using PicPay.Application.DTOs;
 
 namespace PicPay.Application.Validators;
 
-public class UserValidator : AbstractValidator<UserDto>
+public abstract class UserValidator : AbstractValidator<UserDto>
 {
-    public UserValidator()
+    protected UserValidator()
     {
         RuleFor(user => user.FullName)
             .NotEmpty().WithMessage("Full name is required.")

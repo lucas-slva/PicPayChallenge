@@ -8,7 +8,6 @@ public interface IWalletRepository
     Task<IEnumerable<Wallet>> GetAllAsync();
     Task<Wallet> CreateAsync(Wallet wallet);
     Task UpdateAsync(Wallet wallet);
-    Task DeleteAsync(Wallet wallet);
-        
     Task<Wallet?> GetByUserIdAsync(Guid userId);
+    Task UpdateWalletBalanceAsync(Guid userId, decimal amount);
 }

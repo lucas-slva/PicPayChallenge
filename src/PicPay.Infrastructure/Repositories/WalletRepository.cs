@@ -32,14 +32,16 @@ public class WalletRepository(PicPayDbContext context) : IWalletRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task DeleteAsync(Wallet wallet)
-    {
-        _context.Wallets.Remove(wallet);
-        await _context.SaveChangesAsync();
-    }
-
     public async Task<Wallet?> GetByUserIdAsync(Guid userId)
     {
         return await _context.Wallets.FirstOrDefaultAsync(w => w.UserId == userId);
+    }
+
+    public async Task UpdateWalletBalanceAsync(Guid userId, decimal amount)
+    {
+        var wallet = await GetByIdAsync(userId);
+        wallet!.Balance += amount;
+        _context.Wallets.Update(wallet);
+        await _context.SaveChangesAsync();
     }
 }
